@@ -31,6 +31,19 @@ describe('backend-express-template routes', () => {
       }
     ));
   });
+  it('#POST /should add a new instrument', async () => {
+    const newInstrument = {
+      name: 'Bass',
+      category: 'Strings',
+      range: 'Bass'
+    };
+    const res = await request(app).post('/instruments').send(newInstrument);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newInstrument
+    });
+  });
 
   afterAll(() => {
     pool.end();
