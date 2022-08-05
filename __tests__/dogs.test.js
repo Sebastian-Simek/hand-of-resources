@@ -31,4 +31,18 @@ describe('backend-express-template-routes', () => {
     }));
   });
 
+  it('#POST /dogs should add a new dog', async () => {
+    const newDog = {
+      name: 'Bill',
+      type: 'Poodle',
+      age: 4
+    };
+    const res = await request(app).post('/dogs').send(newDog);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newDog
+    });
+  });
+
 });
