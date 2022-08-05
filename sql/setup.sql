@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS cars;
 DROP TABLE IF EXISTS fruits;
 DROP TABLE IF EXISTS dogs;
+DROP TABLE IF EXISTS cats;
 
 CREATE TABLE instruments (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -28,6 +29,13 @@ CREATE TABLE fruits (
 );
 
 CREATE TABLE dogs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    age INT
+);
+
+CREATE TABLE cats (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     type VARCHAR NOT NULL,
@@ -79,4 +87,14 @@ INSERT INTO dogs (
 VALUES
 ('Spot', 'Poodle', 6),
 ('Jeep', 'Mutt', 3),
-('Benny', 'Terrier', 5)
+('Benny', 'Terrier', 5);
+
+INSERT INTO cats (
+    name,
+    type,
+    age
+)
+VALUES
+('Viola', 'Tabby', 6),
+('Sam', 'long hair', 3),
+('Teddy', 'Siamese', 5)
