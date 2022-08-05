@@ -52,5 +52,13 @@ describe('backend-express-template-routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.is_healthy).toEqual(false);
   });
+
+  it('#DELETE /fruits/:id should delete a fruit', async () => {
+    const res = await request(app).delete('/fruits/1');
+    expect(res.status).toBe(200);
+
+    const fruitRes = await request(app).get('/fruits/1');
+    expect(fruitRes.status).toBe(500);
+  });
     
 });
