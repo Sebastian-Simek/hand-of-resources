@@ -52,4 +52,12 @@ describe('backend-express-template-routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.age).toEqual(1);
   });
+
+  it('#DELETE /dogs/:id should remove a dog', async () => {
+    const res = await request(app).delete('/dogs/1');
+    expect(res.status).toBe(200);
+
+    const dogRes = await request(app).get('/dogs/1');
+    expect(dogRes.status).toBe(500);
+  });
 });
