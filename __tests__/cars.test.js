@@ -36,6 +36,23 @@ describe('backend-express-template-routes', () => {
       }
     );
   });
+
+  it('#POST /cars should add a new car', async () => {
+    const newCar = {
+      name: 'Golf',
+      manufacturer: 'VW',
+      country: 'Germany',
+      year: 2018
+    };
+
+    const res = await  request(app).post('/cars').send(newCar);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newCar
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
