@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS cars;
 DROP TABLE IF EXISTS fruits;
+DROP TABLE IF EXISTS dogs;
 
 CREATE TABLE instruments (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -24,6 +25,13 @@ CREATE TABLE fruits (
     name VARCHAR NOT NULL,
     type VARCHAR NOT NULL,
     is_healthy BOOLEAN
+);
+
+CREATE TABLE dogs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    age INT
 );
 
 INSERT INTO instruments (
@@ -62,3 +70,13 @@ VALUES
 ('Apple', 'Tree Based', true),
 ('Orange', 'Citrus', true),
 ('Fig', 'Flower', false);
+
+INSERT INTO dogs (
+    name,
+    type,
+    age
+)
+VALUES
+('Spot', 'Poodle', 6),
+('Jeep', 'Mutt', 3),
+('Benny', 'Terrier', 5)
