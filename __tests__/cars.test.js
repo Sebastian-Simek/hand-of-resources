@@ -62,8 +62,15 @@ describe('backend-express-template-routes', () => {
     expect(res.body.name).toBe('STI');
     expect(res.body.year).toBe(2015);
   });
-  'asdfasdf'
   afterAll(() => {
     pool.end();
+  });
+
+  it('#Delete /cars/:id should delete a car', async () => {
+    const res = await request(app).delete('/cars/1');
+    expect(res.status).toBe(200);
+
+    const carRes = await request(app).get('/cars/1');
+    expect(carRes.status).toBe(500);
   });
 });
