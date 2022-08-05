@@ -22,6 +22,20 @@ describe('backend-express-template-routes', () => {
       }
     ]));
   });
+
+  it('#GET /cars/:id should return a single car', async () => {
+    const res = await request(app).get('/cars/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(
+      {
+        id: '1',
+        name: 'Outback',
+        manufacturer: 'Subaru',
+        country: 'Japan',
+        year: 2003
+      }
+    );
+  });
   afterAll(() => {
     pool.end();
   });
