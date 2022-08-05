@@ -53,6 +53,16 @@ describe('backend-express-template-routes', () => {
     });
   });
 
+  it('#PUT /cars/:id should update an existing car', async () => {
+    const res = await request(app).put('/cars/1').send({
+      name: 'STI',
+      year: 2015
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('STI');
+    expect(res.body.year).toBe(2015);
+  });
+  'asdfasdf'
   afterAll(() => {
     pool.end();
   });
