@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS fruits;
 
 CREATE TABLE instruments (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -16,6 +17,13 @@ CREATE TABLE cars (
     manufacturer VARCHAR NOT NULL,
     country VARCHAR NOT NULL,
     year INT
+);
+
+CREATE TABLE fruits (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    is_healthy BOOLEAN
 );
 
 INSERT INTO instruments (
@@ -43,5 +51,14 @@ VALUES
 ('Corolla', 'Toyota', 'Japan', 2020),
 ('M3', 'BMW', 'Germany', 1997),
 ('911', 'Porsche', 'Germany', 2022),
-('Mustang', 'Ford', 'USA', 1967)
+('Mustang', 'Ford', 'USA', 1967);
 
+INSERT INTO fruits (
+    name,
+    type,
+    is_healthy
+)
+VALUES 
+('Apple', 'Tree Based', true),
+('Orange', 'Citrus', true),
+('Fig', 'Flower', false);
