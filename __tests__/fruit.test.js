@@ -30,6 +30,27 @@ describe('backend-express-template-routes', () => {
       is_healthy: expect.any(Boolean)
     }));
   });
+
+  it('#POST /fruits should create a new fruit', async () => {
+    const newFruit = {
+      name: 'Apricot',
+      type: 'Plum',
+      is_healthy: true,
+    };
+    const res = await request(app).post('/fruits').send(newFruit);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newFruit
+    });
+  });
   
+  it('#PUT /fruit/:id should update an existing fruit', async () => {
+    const res = await request(app).put('/fruits/1').send({
+      is_healthy: false
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.is_healthy).toEqual(false);
+  });
     
 });
