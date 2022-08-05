@@ -19,6 +19,17 @@ describe('backend-express-template-routes', () => {
       }
     ]));
   });
+
+  it('#GET /fruits/:id should return one fruit', async () => {
+    const res = await request(app).get('/fruits/1');
+    // expect(res.status).toBe(200);
+    expect(res.body).toEqual(expect.objectContaining({
+      id: expect.any(String),
+      name: expect.any(String),
+      type: expect.any(String),
+      is_healthy: expect.any(Boolean)
+    }));
+  });
   
     
 });
