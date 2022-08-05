@@ -45,4 +45,11 @@ describe('backend-express-template-routes', () => {
     });
   });
 
+  it('#PUT /dogs/:id should update a dog', async () => {
+    const res = await request(app).put('/dogs/1').send({
+      age: 1
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.age).toEqual(1);
+  });
 });
