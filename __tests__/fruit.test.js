@@ -33,7 +33,7 @@ describe('backend-express-template-routes', () => {
 
   it('#POST /fruits should create a new fruit', async () => {
     const newFruit = {
-      name: 'Apricot',
+      name: 'Apicot',
       type: 'Plum',
       is_healthy: true,
     };
